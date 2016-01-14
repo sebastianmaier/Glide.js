@@ -963,8 +963,12 @@
 		this.pause();
 
 		if(this.options.circular) {
-			this.firstClone.remove();
+			if(this.firstClone){
+				this.firstClone.remove();
+			}
+			if(this.lastClone){
 			this.lastClone.remove();
+			}
 		}
 
 	};
