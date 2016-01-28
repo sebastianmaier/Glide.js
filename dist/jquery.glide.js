@@ -761,13 +761,13 @@
 		 * Get right element when circular is active
 		 */
 		if (this.options.circular) {
-			$('.slider__wrapper').children()
+			this.slides
 				.eq(-currentSlide + 1).addClass(this.options.sliderCurrentItemClass)
 					.siblings()
 						.removeClass(this.options.sliderCurrentItemClass);
 
 		} else {
-			$('.slider__wrapper').children()
+			this.slides
 				.eq(-currentSlide).addClass(this.options.sliderCurrentItemClass)
 					.siblings()
 						.removeClass(this.options.sliderCurrentItemClass);
@@ -805,7 +805,7 @@
 			}
 
 			// Set item current class to slider
-			$('.slider__wrapper').children()
+			this.slides
 				.eq(-currentSlide)
 					.css('z-index', '2')
 					.stop(true, false).animate({ opacity: 1 },tempAnimationDuration)
