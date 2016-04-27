@@ -1,6 +1,6 @@
 /*!
  * Glide.js
- * Version: 1.0.7
+ * Version: 1.0.8
  * Simple, lightweight and fast jQuery slider
  * Author: @JedrzejChalubek
  * Site: http://jedrzejchalubek.com/
@@ -82,6 +82,8 @@
 
 			// {Function} Callback before slide change
 			beforeTransition: function() {},
+			// {Function} Callback before slide change
+			aroundTransition: function() {},
 			// {Function} Callback after slide change
 			afterTransition: function() {}
 
@@ -725,6 +727,9 @@
 		 */
 		this.pause();
 
+		// setting the distance where to jump to
+		this.distance = distance;
+
 		// Callbacks before slide change
 		this.options.beforeTransition.call(this);
 
@@ -786,6 +791,8 @@
 			if (fromFirst) offset = 0;
 		}
 
+		this.aroundCurrentSlide = currentSlide;
+		this.options.aroundTransition.call(this);
 		/**
 		 * Slide change animation
 		 * While CSS3 is supported use offset
